@@ -87,6 +87,49 @@ def draw_single_roi(prompt: str, image: np.ndarray) -> tuple:
     rois = draw_multiple_rois(prompt, image)
     return rois[0] if rois else (0, 0, 0, 0)
 
+def draw_ruler_line(image: np.ndarray, prompt="Click two ends of a 300 mm ruler") -> float:
+    points = []
+    window_name = "Calibrate Ruler"
+
+    def mouse_callback(event, x, y, flags, param):
+        if event == cv2.EVENT_LBUTTONDOWN and len(points) < 2:
+            points.append((x, y))
+
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(window_name, *WINDOW_SIZE)
+    cv2.moveWindow(window_name, center_x, center_y)
+    cv2.setMouseCallback(window_name, mouse_callback)
+
+    while True:
+        display = image.copy()
+        for pt in points:
+            cv2.circle(display, pt, 5, (0, 0, 255), -1)
+        if len(points) == 2:
+            cv2.line(display, points[0], points[1], (0, 0, 255), 2)
+            px_len = np.hypot(points[0][0] - points[1][0], points[0][1] - points[1][1])
+            mm_len = 300.0
+            mm_per_px = mm_len / px_len
+            cv2.putText(display, f"{mm_per_px:.3f} mm/px", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2)
+        cv2.putText(display, prompt, (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2)
+        cv2.putText(display, "Z=undo  Q=quit  Enter=done  Esc=cancel", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255), 2)
+        cv2.imshow(window_name, display)
+        key = cv2.waitKey(1) & 0xFF
+        if key in (13, 10) and len(points) == 2:
+            break
+        elif key == 27:
+            points = []
+            break
+        elif key == ord("z") and points:
+            points.pop()
+        elif key == ord("q"):
+            sys.exit("User exited.")
+
+    cv2.destroyWindow(window_name)
+    if len(points) == 2:
+        px_len = np.hypot(points[0][0] - points[1][0], points[0][1] - points[1][1])
+        return 300.0 / px_len if px_len > 0 else 0.0
+    return 0.0
+
 def roi_mask(shape: tuple, rect: tuple) -> np.ndarray:
     height, width = shape[:2]
     mask = np.zeros((height, width), dtype=np.uint8)
@@ -138,11 +181,6 @@ def measure_line(prompt: str, image: np.ndarray, mm_per_px: float) -> float:
         return px * mm_per_px
     return 0.0
 
-def calibrate_scale(ruler_rect: tuple) -> float:
-    _, _, w, h = ruler_rect
-    length_px = max(w, h)
-    return 300.0 / length_px if length_px > 0 else 0.0
-
 def display_results(crop, skeleton, metrics, plant_index, basename):
     kernel = np.ones((3, 3), dtype=np.uint8)
     neighbor_count = cv2.filter2D((skeleton > 0).astype(np.uint8), -1, kernel)
@@ -183,8 +221,7 @@ def main(image_path):
         return
 
     basename = os.path.splitext(os.path.basename(image_path))[0]
-    ruler_rect = draw_single_roi("Draw RULER box (Enter=confirm, Esc=cancel)", img)
-    mm_per_px = calibrate_scale(ruler_rect)
+    mm_per_px = draw_ruler_line(img)
     print(f"Scale calibrated: {mm_per_px:.4f} mm/pixel")
 
     plant_rects = draw_multiple_rois("Draw PLANT boxes (Z=undo, Enter=done, Esc=cancel)", img)
