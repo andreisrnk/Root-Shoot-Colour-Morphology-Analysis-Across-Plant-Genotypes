@@ -103,11 +103,12 @@ python professional_analyzer.py <path_to_image>
 
 | Step	| Description                                                         |
 |------ |---------------------------------------------------------------------|
-| 1️⃣   |	Draw ruler box (300 mm known length)                                |
-| 2️⃣   |	Draw bounding boxes around each plant                               |
-| 3️⃣   |	For each plant: Draw root and shoot area                            |
-| 4️⃣   |	Manually measure root length and diameter by clicking two endpoints |
-| 5️⃣   |	View results → press ENTER to continue or Q to quit                 |
+| 1️⃣   |	Draw ruler box (300 mm known length)                                | ![image](https://github.com/user-attachments/assets/1962a96d-bc0d-462e-98ef-e7adac88babd) |
+| 2️⃣   |	Draw bounding boxes around each plant                               | ![image](https://github.com/user-attachments/assets/63299ff0-147f-4cff-abb0-8cb9976237fa) |
+| 3️⃣   |	For each plant: Draw root and shoot area                            |![image](https://github.com/user-attachments/assets/cde8c3cd-f27c-4c18-add7-3efe19af1d6b) ![image](https://github.com/user-attachments/assets/7ebfa789-888a-4540-b9b9-3d64c4899ed8) |
+| 4️⃣   |	Manually measure root length and diameter by clicking two endpoints | ![image](https://github.com/user-attachments/assets/59e4002e-3a73-479b-9fa7-2c6063f9c034) ![image](https://github.com/user-attachments/assets/d4ff7faa-f94b-4aee-8105-3704a71ea38b) |
+| 5️⃣   |	View results → press ENTER to continue or Q to quit                 | ![image](https://github.com/user-attachments/assets/8327cd3d-29b5-46dd-9554-25c0fd62c6a8) |
+
 
 ### ⌨️ Keyboard Shortcuts
 - Z — Undo last box or point
@@ -121,9 +122,8 @@ project/
 ├── professional_analyzer.py         # Main script for image analysis
 ├── input_image.jpg                  # Example input image
 ├── professional_metrics.csv         # Summary of measurements
-├── output/                          # Annotated output images
-│   ├── plant1_branches.png
-│   ├── plant2_branches.png
+├── plant1_branches.png              # Annotated output images
+├── plant2_branches.png
 ```
 
 ## ✅ Status
