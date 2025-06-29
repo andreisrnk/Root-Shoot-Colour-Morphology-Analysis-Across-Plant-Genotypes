@@ -116,18 +116,15 @@ python professional_analyzer.py <path_to_image>
 - Q — Quit the program and export partial results
 
 ## 📁 Folder Structure
-
+```bash
 project/
-├── professional_analyzer.py # Main script
-├── input_image.jpg # Example input image
-├── professional_metrics.csv # Output summary CSV
-├── output/ # Folder with annotated result images
-│ ├── plant1_branches.png
-│ ├── plant2_branches.png
-
-markdown
-Copy
-Edit
+├── professional_analyzer.py         # Main script for image analysis
+├── input_image.jpg                  # Example input image
+├── professional_metrics.csv         # Summary of measurements
+├── output/                          # Annotated output images
+│   ├── plant1_branches.png
+│   ├── plant2_branches.png
+```
 
 ## ✅ Status
 - Fully functional
