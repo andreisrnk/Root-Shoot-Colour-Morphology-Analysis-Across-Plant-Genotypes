@@ -94,7 +94,6 @@ Install dependencies:
 pip install opencv-python numpy pandas matplotlib scikit-image scipy
 
 ### How to Run
+
 ```bash
-Copy
-Edit
 python professional_analyzer.py <path_to_image>
