@@ -114,3 +114,31 @@ python professional_analyzer.py <path_to_image>
 - Enter — Confirm step / move to next plant
 - Esc — Cancel current step
 - Q — Quit the program and export partial results
+
+## 📁 Folder Structure
+
+project/
+├── professional_analyzer.py # Main script
+├── input_image.jpg # Example input image
+├── professional_metrics.csv # Output summary CSV
+├── output/ # Folder with annotated result images
+│ ├── plant1_branches.png
+│ ├── plant2_branches.png
+
+markdown
+Copy
+Edit
+
+## ✅ Status
+- Fully functional
+
+## 🧪 Testing
+- Verified on multiple **tomato genotypes**
+
+## 🛠️ Mode
+- **Manual-only** mode ensures higher accuracy for **small datasets**
+
+## 🎓 Course Info
+Developed as part of the course  
+**Python Programming for Biologists**  
+*Weizmann Institute of Science, 2024–2025*
