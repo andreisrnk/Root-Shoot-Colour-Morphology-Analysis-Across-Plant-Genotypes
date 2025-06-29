@@ -94,8 +94,17 @@ Install dependencies:
 pip install opencv-python numpy pandas matplotlib scikit-image scipy
 ```
 
-### How to Run
+### ▶️ How to Run
 
 ```bash
 python professional_analyzer.py <path_to_image>
 ```
+### 🧭 User Instructions (Interactive GUI)
+
+| Step	| Description                                                         |
+|------ |---------------------------------------------------------------------|
+| 1️⃣   |	Draw ruler box (300 mm known length)                                |
+| 2️⃣   |	Draw bounding boxes around each plant                               |
+| 3️⃣   |	For each plant: Draw root and shoot area                            |
+| 4️⃣   |	Manually measure root length and diameter by clicking two endpoints |
+| 5️⃣   |	View results → press ENTER to continue or Q to quit                 |
