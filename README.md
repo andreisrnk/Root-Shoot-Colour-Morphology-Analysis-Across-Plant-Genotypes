@@ -1,91 +1,115 @@
-## Project Proposal: Root & Shoot Colour & Morphology Analysis Across Plant Genotypes
+🌿 Root & Shoot Colour & Morphology Analysis Across Plant Genotypes
+Quantifying root and shoot color, length, width, and branching from plant images using an interactive Python-based GUI.
 
-### Background  
-During my rotation in the Plant Science Lab, I worked with several tomato genotypes infected by a pathogenic fungi. To assess infection severity, we grew the plants for two weeks, then gently washed their roots and photographed both roots and shoots. Infected roots appeared noticeably darker than uninfected controls, and we wanted to quantify and compare root darkness as well as the length and width of both roots and shoots across genotypes. All images were captured using the same camera, at a fixed distance, and under consistent lighting conditions.
+📚 Background
+During my rotation in a Plant Science Lab, I worked with several tomato genotypes infected by a pathogenic fungus. To assess infection severity:
 
+Plants were grown for 2 weeks
 
-### Objective  
-Develop a Python‐based tool that quantitatively analyzes both **colour** and **morphological** traits of roots and shoots from these images, in order to detect and compare infection-induced changes across genotypes. This will help identify genotypes that exhibit enhanced resistance or susceptibility by measuring shifts in hue, saturation, brightness, as well as root/shoot size metrics.
+Roots were gently washed and photographed (along with shoots)
 
-Root & Shoot Morphology and Color Analyzer
-A professional Python-based tool to manually analyze morphological and color traits of root and shoot tissues from plant images. Developed during my MSc rotation in a Plant Science lab, this tool was used to study tomato genotypes infected with pathogenic fungi.
+Infected roots appeared darker than healthy controls
 
+All images were taken with a fixed camera setup under standard lighting to enable consistent comparisons.
 
-🔬 Project Summary
-This tool enables manual image-based quantification of plant morphology and color:
+🎯 Objective
+Develop a Python-based tool to quantitatively analyze both colour and morphological traits of roots and shoots from images. This enables detection of infection-induced changes across genotypes by tracking:
 
-Root & shoot segmentation via interactive bounding boxes.
+🌈 Changes in saturation and brightness
 
-Manual measurement of root length and width.
+📏 Morphological traits like root/shoot length and diameter
 
-Color extraction (mean shoot greenness and root darkness).
+🔧 What This Project Does
+✅ Scale calibration using a 300 mm ruler
 
-Root branching detection using skeleton overlays.
+🌱 Manual plant ROI selection
 
-Results visualization and CSV export.
+🌿 Manual root/shoot area annotation
+
+🎯 Manual measurement of root length and diameter
+
+🎨 Extracts:
+
+Mean greenness of shoot
+
+Mean brightness (gray level) of root
+
+🔗 Root skeletonization and branch count
+
+📊 Exports to CSV and saves annotated overlays
 
 📷 Use Case Background
-During fungal infection experiments, infected tomato roots appeared visually darker than controls. By capturing standardized images (same lighting and distance), we aimed to:
+This project helps researchers:
 
-Compare infection severity across genotypes.
+Compare infection severity visually and quantitatively
 
-Quantify root darkness, branching, and length/width.
+Detect color shifts and morphological differences
 
-Identify resistant vs. susceptible genotypes.
+Identify genotypes with enhanced resistance or susceptibility
 
 💻 Features
 Feature	Description
-🧭 Manual scale calibration	Draw box over a 300 mm ruler in the image.
-🌱 Plant ROI selection	Draw bounding boxes over each plant manually.
-🌿 Root & shoot annotation	Draw separate boxes for root and shoot areas.
-🎯 Manual length/width measurement	Click to measure root length and diameter.
-🎨 Color analysis	Mean shoot green (G channel) and root gray (brightness) values.
-🔗 Skeleton overlay	Auto-detects root skeletons, overlays red lines and blue branch tips.
-🖼️ Visual output	Saves annotated images and plots.
-📊 CSV export	Per-plant metrics saved to professional_metrics.csv.
+🧭 Manual scale calibration	Draw box over the 300 mm ruler in the image
+🌱 Plant ROI selection	Manually draw boxes around each plant
+🌿 Root & shoot annotation	Draw separate boxes for root and shoot areas
+🎯 Root length & width	Manually measure length and diameter
+🎨 Color analysis	Extract mean green (shoot) & gray (root) values
+🔗 Root skeleton overlay	Auto-skeleton with red root lines and blue branch tips
+🖼️ Annotated output	Save processed images with overlaid metrics
+📊 CSV export	Per-plant metrics saved to professional_metrics.csv
 
 📥 Inputs
-A single image file (.jpg, .png, etc.) of one or more plants.
+A single image (JPG or PNG) containing one or more plants
 
-Ruler must be included in the image (300 mm length).
+Each image must include a 300 mm ruler
 
-Manual interaction required throughout the process.
+User provides manual interaction to draw bounding boxes and measure distances
 
 📤 Outputs
-professional_metrics.csv — summary of root/shoot traits for all plants.
+professional_metrics.csv:
 
-Annotated images for each plant (e.g. plant1_branches.png).
+PlantIndex	MeanShootGreen	MeanRootGray	BranchCount	ManualLength_mm	ManualDiameter_mm
+1	145.2	103.4	4	87.3	3.5
 
-Interactive matplotlib figure for each plant with measurements and overlay.
+Annotated images:
 
-⚙️ How to Run
-1. Install requirements:
+basename_plant<index>_branches.png
+
+Overlays include:
+
+📏 Skeleton (red)
+
+🔵 Branch endpoints (blue)
+
+🏷️ Plant ID (white text)
+
+⚙️ Technical Details
+✅ Requirements
+Install with:
+
 bash
 Copy
 Edit
 pip install opencv-python numpy pandas matplotlib scikit-image scipy
-2. Run the script:
+▶️ How to Run
 bash
 Copy
 Edit
 python professional_analyzer.py <path_to_image>
 🧭 User Instructions (Interactive GUI)
-Step	Action
-1.	Draw ruler box (300 mm known length).
-2.	Draw plant boxes (one per plant).
-3.	For each plant:
-a) Draw root area,
-b) Draw shoot area.
-4.	Measure root length and width manually by clicking endpoints.
-5.	View annotated figure and press ENTER to continue to next plant or Q to quit.
+Step	Description
+1️⃣	Draw ruler box (300 mm known length)
+2️⃣	Draw bounding boxes around each plant
+3️⃣	For each plant: Draw root & shoot areas
+4️⃣	Manually click to measure root length and diameter
+5️⃣	View results → press ENTER to continue or Q to quit
 
-Keyboard controls during drawing:
+⌨️ Keyboard Shortcuts
+Z — Undo last action
 
-Z — Undo last box or click
+Enter — Confirm / next step
 
-Enter — Confirm step
-
-Esc — Cancel current step
+Esc — Cancel step
 
 Q — Quit program
 
@@ -101,9 +125,15 @@ project/
 │   ├── plant1_branches.png
 │   ├── plant2_branches.png
 ✅ Status
-✅ Functional
-🧪 Tested with multiple tomato genotypes
-🛠️ Manual-only workflow ensures precision for small datasets
+✅ Fully Functional
+
+🧪 Tested on tomato genotypes
+
+🛠️ Precision ensured via manual control
+
+📊 Suitable for low-throughput, high-quality data acquisition
 
 🎓 Course Info
-This project was developed as part of the course Python Programming for Biologists at Weizmann Institute of Science, 2024–2025.
+This project was developed as part of the course
+Python Programming for Biologists
+at the Weizmann Institute of Science, 2024–2025.
