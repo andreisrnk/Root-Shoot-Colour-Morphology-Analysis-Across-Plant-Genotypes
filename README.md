@@ -46,8 +46,7 @@ This project helps researchers:
 
 | Feature                    | Description                                                              |
 |---------------------------|--------------------------------------------------------------------------|
-| 🧭 Manual scale calibration | Draw a box over the 300 mm ruler to calibrate mm/pixel scale ![image](https://github.com/user-attachments/assets/e2306737-d768-4257-830c-dcfbf27a0dee)
-            |
+| 🧭 Manual scale calibration | Draw a box over the 300 mm ruler to calibrate mm/pixel scale             | 
 | 🌱 Plant ROI selection      | Manually draw bounding boxes around each plant                           |
 | 🌿 Root & shoot annotation  | Draw separate boxes for root and shoot areas                             |
 | 🎯 Root length & width      | Click endpoints to measure manually                                      |
