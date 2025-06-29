@@ -99,7 +99,7 @@ pip install opencv-python numpy pandas matplotlib scikit-image scipy
 ```bash
 python professional_analyzer.py <path_to_image>
 ```
-### 🧭 User Instructions (Interactive GUI)
+### 🧭 User Instructions
 
 | Step	| Description                                                         |
 |------ |---------------------------------------------------------------------|
@@ -108,3 +108,9 @@ python professional_analyzer.py <path_to_image>
 | 3️⃣   |	For each plant: Draw root and shoot area                            |
 | 4️⃣   |	Manually measure root length and diameter by clicking two endpoints |
 | 5️⃣   |	View results → press ENTER to continue or Q to quit                 |
+
+### ⌨️ Keyboard Shortcuts
+- Z — Undo last box or point
+- Enter — Confirm step / move to next plant
+- Esc — Cancel current step
+- Q — Quit the program and export partial results
