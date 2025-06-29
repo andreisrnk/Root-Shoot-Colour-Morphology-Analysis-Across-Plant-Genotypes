@@ -7,30 +7,103 @@ During my rotation in the Plant Science Lab, I worked with several tomato genoty
 ### Objective  
 Develop a Python‐based tool that quantitatively analyzes both **colour** and **morphological** traits of roots and shoots from these images, in order to detect and compare infection-induced changes across genotypes. This will help identify genotypes that exhibit enhanced resistance or susceptibility by measuring shifts in hue, saturation, brightness, as well as root/shoot size metrics.
 
-### What the Project Does  
-1. **Image ingestion**:  
-   - Load sets of TIFF/JPG images organized by genotype and treatment (infected vs. control).  
-2. **Scale calibration**:  
-   - Automatically detect or allow user to specify a reference object (ruler) for consistent scaling.  
-3. **Region segmentation**:  
-   - Identify and separate root and shoot regions—either via manual ROI selection or by applying simple colour-threshold masks.  
-4. **Colour analysis**:  
-   - Compute per-region colour statistics (mean & variance of HSV channels), generate heat maps of hue shift, and track temporal changes if a time series is available.  
-5. **Morphological measurements**:  
-   - **Root metrics**  
-     - Total root length (mm) via skeletonization.  
-     - Mean root width (mm) via distance transform.  
-     - Count of individual root branches.  
-   - **Shoot metrics**  
-     - Total shoot length (mm) via user‐guided or automated skeleton tracing.  
-6. **Reporting**:  
-   - Export results as CSV tables and annotated overlays (e.g. false-colour maps, skeleton overlays) for downstream statistical analysis.
+Root & Shoot Morphology and Color Analyzer
+A professional Python-based tool to manually analyze morphological and color traits of root and shoot tissues from plant images. Developed during my MSc rotation in a Plant Science lab, this tool was used to study tomato genotypes infected with pathogenic fungi.
 
-### Inputs & Outputs  
-- **Inputs**:  
-  - A directory of raw images (by genotype and treatment).  
-  - (Optional) A YAML config file specifying folder structure, reference-object dimensions, and analysis parameters.  
-- **Outputs**:  
-  - CSV summaries (`<genotype>_<treatment>_metrics.csv`) with per-image HSV and morphological statistics.  
-  - Annotated images saved under `output/heatmaps/`, `output/overlays/`, and `output/skeletons/`.  
-  - Time-course plots (PNG) for each genotype showing colour and size changes over days post-inoculation.
+
+🔬 Project Summary
+This tool enables manual image-based quantification of plant morphology and color:
+
+Root & shoot segmentation via interactive bounding boxes.
+
+Manual measurement of root length and width.
+
+Color extraction (mean shoot greenness and root darkness).
+
+Root branching detection using skeleton overlays.
+
+Results visualization and CSV export.
+
+📷 Use Case Background
+During fungal infection experiments, infected tomato roots appeared visually darker than controls. By capturing standardized images (same lighting and distance), we aimed to:
+
+Compare infection severity across genotypes.
+
+Quantify root darkness, branching, and length/width.
+
+Identify resistant vs. susceptible genotypes.
+
+💻 Features
+Feature	Description
+🧭 Manual scale calibration	Draw box over a 300 mm ruler in the image.
+🌱 Plant ROI selection	Draw bounding boxes over each plant manually.
+🌿 Root & shoot annotation	Draw separate boxes for root and shoot areas.
+🎯 Manual length/width measurement	Click to measure root length and diameter.
+🎨 Color analysis	Mean shoot green (G channel) and root gray (brightness) values.
+🔗 Skeleton overlay	Auto-detects root skeletons, overlays red lines and blue branch tips.
+🖼️ Visual output	Saves annotated images and plots.
+📊 CSV export	Per-plant metrics saved to professional_metrics.csv.
+
+📥 Inputs
+A single image file (.jpg, .png, etc.) of one or more plants.
+
+Ruler must be included in the image (300 mm length).
+
+Manual interaction required throughout the process.
+
+📤 Outputs
+professional_metrics.csv — summary of root/shoot traits for all plants.
+
+Annotated images for each plant (e.g. plant1_branches.png).
+
+Interactive matplotlib figure for each plant with measurements and overlay.
+
+⚙️ How to Run
+1. Install requirements:
+bash
+Copy
+Edit
+pip install opencv-python numpy pandas matplotlib scikit-image scipy
+2. Run the script:
+bash
+Copy
+Edit
+python professional_analyzer.py <path_to_image>
+🧭 User Instructions (Interactive GUI)
+Step	Action
+1.	Draw ruler box (300 mm known length).
+2.	Draw plant boxes (one per plant).
+3.	For each plant:
+a) Draw root area,
+b) Draw shoot area.
+4.	Measure root length and width manually by clicking endpoints.
+5.	View annotated figure and press ENTER to continue to next plant or Q to quit.
+
+Keyboard controls during drawing:
+
+Z — Undo last box or click
+
+Enter — Confirm step
+
+Esc — Cancel current step
+
+Q — Quit program
+
+📁 Folder Structure
+lua
+Copy
+Edit
+project/
+├── professional_analyzer.py
+├── input_image.jpg
+├── professional_metrics.csv
+├── output/
+│   ├── plant1_branches.png
+│   ├── plant2_branches.png
+✅ Status
+✅ Functional
+🧪 Tested with multiple tomato genotypes
+🛠️ Manual-only workflow ensures precision for small datasets
+
+🎓 Course Info
+This project was developed as part of the course Python Programming for Biologists at Weizmann Institute of Science, 2024–2025.
