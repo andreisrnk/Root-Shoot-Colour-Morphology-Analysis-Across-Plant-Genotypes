@@ -135,7 +135,7 @@ python professional_analyzer.py <path_to_image>
 - Z — Undo last box or point
 - Enter — Confirm step / move to next plant
 - Esc — Cancel current step
-- Q — Quit the program and export partial results
+- Q — Quit the program
 
 ## 📁 Folder Structure
 ```bash
