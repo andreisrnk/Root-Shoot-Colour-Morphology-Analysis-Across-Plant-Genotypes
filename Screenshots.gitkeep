@@ -1,3 +1,0 @@
-git add project/IMAGES/.gitkeep
-git commit -m "Add IMAGES folder with .gitkeep"
-git push
