@@ -135,6 +135,21 @@ project/
 ## 🛠️ Mode
 - **Manual-only** mode ensures higher accuracy for **small datasets**
 
+### 📸 Screenshots
+
+**Root Length Detection**
+![Root Length](https://github.com/andreisrnk/Root-Shoot-Colour-Morphology-Analysis-Across-Plant-Genotypes/raw/main/Screenshots/Roo_Length.png)
+
+**Root Width Detection**
+![Root Width](https://github.com/andreisrnk/Root-Shoot-Colour-Morphology-Analysis-Across-Plant-Genotypes/raw/main/Screenshots/Root_width.png)
+
+**Shoot Detection**
+![Shoot](https://github.com/andreisrnk/Root-Shoot-Colour-Morphology-Analysis-Across-Plant-Genotypes/raw/main/Screenshots/shoot.png)
+
+**Final Result**
+![Result](https://github.com/andreisrnk/Root-Shoot-Colour-Morphology-Analysis-Across-Plant-Genotypes/raw/main/Screenshots/result.png)
+
+
 ## 🎓 Course Info
 Developed as part of the course  
 **Python Programming for Biologists**  
