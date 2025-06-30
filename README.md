@@ -143,8 +143,8 @@ project/
 ├── professional_analyzer.py         # Main script for image analysis
 ├── input_image.jpg                  # Example input image
 ├── professional_metrics.csv         # Summary of measurements
-├── plant1_branches.png              # Annotated output images
-├── plant2_branches.png
+├── output_plant1.png              # Annotated output images
+├── output_plant2.png
 ```
 
 ## ✅ Status
