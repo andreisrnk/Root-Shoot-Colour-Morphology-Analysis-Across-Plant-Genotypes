@@ -158,5 +158,5 @@ project/
 - 
 ## 🎓 Course Info
 Developed as part of the course  
-**Python Programming for Biologists**  
-*Weizmann Institute of Science, 2024–2025*
+**Basic programming skills (Python)**  
+*Weizmann Institute of Science, 2025*
