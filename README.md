@@ -97,7 +97,7 @@ pip install opencv-python numpy pandas matplotlib scikit-image scipy
 ### ▶️ How to Run
 
 ```bash
-python professional_analyzer.py <path_to_image>
+python professional_analyzer.py input_image.jpg
 ```
 ### 🧭 User Instructions
 
